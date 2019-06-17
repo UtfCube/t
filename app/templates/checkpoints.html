@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form action="" method="post" novalidate>
+    <p>
+      {{ form.name.label}}<br>
+      {{ form.name(size=32) }}
+      {% for error in form.name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.posting_date.label }}<br>
+      {{ form.posting_date(size=32) }}
+      {% for error in form.posting_date.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.critical_date.label }}<br>
+      {{ form.critical_date(size=32) }}
+      {% for error in form.critical_date.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+  <div>
+    {% for checkpoint in checkpoints %}
+    <p>Наименование контрольной точки: {{ checkpoint.checkpoint_name }}</p>
+    <p>Необходимая дата сдачи: {{ checkpoint.posting_date}}</p>
+    <p>Крайняя дата сдачи: {{ checkpoint.critical_date }}</p>
+    {% endfor %}
+  </div>
+  <hr>
+  <div>
+    {% for pr in group_progress %}
+      <p>
+      {{ pr.Student.lastname }} {{ pr.Progress.checkpoint_name }} {{ pr.Progress.pass_date }}
+      </p>
+    {% endfor %}
+  </div>
+{% endblock %}

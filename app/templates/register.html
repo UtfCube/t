@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.lastname.label }}<br>
+            {{ form.lastname(size=32) }}<br>
+            {% for error in form.lastname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.firstname.label }}<br>
+            {{ form.firstname(size=32) }}<br>
+            {% for error in form.firstname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.patronymic.label }}<br>
+            {{ form.patronymic(size=32) }}<br>
+            {% for error in form.patronymic.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.rank.label }}<br>
+            {{ form.rank(size=32) }}<br>
+            {% for error in form.rank.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        {% if type == "tutor" %}
+            <p>
+                {{ form.degree.label }}<br>
+                {{ form.degree(size=32) }}<br>
+                {% for error in form.degree.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        {% else %}
+            <p>
+                {{ form.admission_year.label }}<br>
+                {{ form.admission_year(size=32) }}<br>
+                {% for error in form.admission_year.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.group_id.label }}<br>
+                {{ form.group_id(size=32) }}<br>
+                {% for error in form.group_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        {% endif %}   
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.repeat_password.label }}<br>
+            {{ form.repeat_password(size=32) }}<br>
+            {% for error in form.repeat_password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

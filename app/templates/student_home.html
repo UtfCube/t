@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Здравствуйте, {{ current_user.username }}!</h1>
+  {% for subject in subjects %}
+  <p>
+    <a href="{{ url_for('get_subject_progress', subject=subject) }}">{{ subject }}</a>
+  </p>
+  {% endfor %}
+{% endblock %}

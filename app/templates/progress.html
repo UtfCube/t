@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div>
+    {% for pr in student_progress %}
+    <p>
+      {{ pr.checkpoint_name }} {{ pr.pass_date }} {{ pr.posting_date }} {{ pr.critical_date }}
+    </p>
+    {% endfor %}
+  </div>
+{% endblock %}

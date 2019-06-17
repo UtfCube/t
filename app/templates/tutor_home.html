@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Здравствуйте, {{ current_user.username }}!</h1>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <p>
+        {% for a in associations %}
+          <p>
+            <a href="{{ url_for('change_subject_progress', subject=a.subject_name, group_id=a.group_id) }}">{{ a.subject_name }} {{ a.group_id }}</a>
+          </p>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.subject.label }}<br>
+        {{ form.subject(size=32) }}<br>
+          {% for error in form.subject.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+      </p>
+      <p>
+        {{ form.group_id.label }}<br>
+        {{ form.group_id(size=32) }}<br>
+          {% for error in form.group_id.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+      </p>
+      <p>
+        {{ form.add() }}
+        {% for error in form.add.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.delete() }}
+        {% for error in form.delete.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+    </form>
+{% endblock %}
